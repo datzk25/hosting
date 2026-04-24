@@ -1,9 +1,390 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-  <title>Shop NovaX</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0, minimum-scale=0.5">
+  <title>Tiến Đạt ❤️ Lê Huyền | Wedding Love</title>
+  <!-- Font Google cho phong cách thiệp cưới lãng mạn -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Quicksand:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fbe9f0; /* nền hồng phấn nhẹ */
+      font-family: 'Quicksand', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Hiệu ứng cánh hoa rơi (hoa anh đào + hồng) */
+    .petals-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle at 30% 30%, #ffd9e6, #ffb3c6);
+      border-radius: 80% 0 80% 0;
+      transform: rotate(45deg);
+      opacity: 0.7;
+      animation: fallPetals linear infinite;
+      box-shadow: 0 0 8px rgba(255, 182, 193, 0.5);
+    }
+
+    @keyframes fallPetals {
+      0% {
+        transform: translateY(-10vh) rotate(0deg) scale(0.8);
+        opacity: 0.9;
+      }
+      70% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg) scale(0.4);
+        opacity: 0.3;
+      }
+    }
+
+    /* Khung thiệp cưới chính */
+    .wedding-card {
+      max-width: 800px;
+      width: 100%;
+      background: rgba(255, 248, 250, 0.85);
+      backdrop-filter: blur(16px);
+      background: linear-gradient(135deg, #fff9fb 0%, #fff0f5 100%);
+      border-radius: 60px 60px 80px 80px;
+      padding: 40px 30px;
+      box-shadow: 0 30px 60px rgba(180, 100, 120, 0.25), 0 10px 25px rgba(200, 130, 140, 0.3);
+      border: 2px solid rgba(255, 215, 225, 0.8);
+      position: relative;
+      z-index: 20;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .wedding-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 40px 70px rgba(190, 110, 130, 0.3);
+    }
+
+    /* Hoa văn góc thiệp */
+    .corner-decoration {
+      position: absolute;
+      font-size: 50px;
+      opacity: 0.5;
+      color: #e6a0b5;
+      font-family: 'Cormorant Garamond', serif;
+      pointer-events: none;
+    }
+    .top-left { top: 15px; left: 25px; transform: rotate(-10deg); }
+    .top-right { top: 15px; right: 25px; transform: rotate(10deg); }
+    .bottom-left { bottom: 15px; left: 25px; transform: rotate(10deg); }
+    .bottom-right { bottom: 15px; right: 25px; transform: rotate(-10deg); }
+
+    .title-small {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: #c9788c;
+      letter-spacing: 3px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .main-names {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: #b3445c;
+      line-height: 1.2;
+      text-shadow: 2px 2px 8px rgba(255, 200, 210, 0.7);
+      margin: 10px 0;
+    }
+
+    .heart-icon {
+      font-size: 3rem;
+      display: block;
+      color: #d45d79;
+      margin: 5px 0;
+      animation: heartbeat 1.5s infinite;
+      filter: drop-shadow(0 4px 6px rgba(200, 100, 120, 0.5));
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.15); }
+      50% { transform: scale(1.05); }
+      70% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    .subtitle {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 300;
+      font-size: 1.2rem;
+      color: #b87b8c;
+      letter-spacing: 2px;
+      margin: 10px 0 20px;
+      text-transform: uppercase;
+      word-spacing: 5px;
+    }
+
+    .divider {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #e0a3b5, #d4738c, #e0a3b5, transparent);
+      margin: 20px auto;
+      border-radius: 5px;
+    }
+
+    .love-message {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.7rem;
+      color: #a14b5e;
+      margin: 20px 15px;
+      line-height: 1.6;
+      background: rgba(255, 235, 240, 0.7);
+      padding: 15px 20px;
+      border-radius: 50px;
+      border: 1px dashed #e6b7c3;
+    }
+
+    .groom-bride {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 30px 0 15px;
+    }
+
+    .person {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: #b8445c;
+      background: #fff5f8;
+      padding: 15px 25px;
+      border-radius: 40px;
+      box-shadow: 0 8px 15px rgba(190, 120, 135, 0.2);
+      border: 1px solid #fccddb;
+      transition: 0.3s;
+      line-height: 1.2;
+    }
+
+    .person small {
+      display: block;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #b56576;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    .and-symbol {
+      font-size: 3rem;
+      color: #d96b80;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .date-place {
+      background: rgba(255, 250, 252, 0.9);
+      border-radius: 40px;
+      padding: 20px 25px;
+      margin: 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      border: 1px solid #f5cfda;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .date-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #944e63;
+    }
+
+    .date-item i {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+      color: #c9647c;
+    }
+
+    .date-item span {
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .footer-quote {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #ba4b66;
+      margin-top: 20px;
+      opacity: 0.9;
+      text-shadow: 0 1px 4px white;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .wedding-card {
+        padding: 30px 20px;
+        border-radius: 50px;
+      }
+      .main-names {
+        font-size: 3.5rem;
+      }
+      .groom-bride {
+        gap: 15px;
+      }
+      .person {
+        font-size: 2rem;
+        padding: 10px 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Đang Test</h1>
+  <!-- Cánh hoa rơi động -->
+  <div class="petals-container" id="petalsContainer"></div>
+
+  <div class="wedding-card">
+    <div class="corner-decoration top-left">❀</div>
+    <div class="corner-decoration top-right">❀</div>
+    <div class="corner-decoration bottom-left">❀</div>
+    <div class="corner-decoration bottom-right">❀</div>
+
+    <div class="title-small"></div>
+    <div class="main-names">
+      Tiến Đạt ❤️ Lê Huyền<br>
+      <span class="heart-icon">♥</span>
+      Lê Huyền
+    </div>
+    <div class="subtitle">Cute & Beautiful Together</div>
+    <div class="divider"></div>
+
+    <div class="love-message">
+      “Tình yêu là khi trái tim tìm thấy<br> 
+      nửa kia dịu dàng nhất của mình.”
+    </div>
+
+    <div class="groom-bride">
+      <div class="person">
+        Tiến Đạt
+        <small>Chú rể</small>
+      </div>
+      <div class="and-symbol">&</div>
+      <div class="person">
+        Lê Huyền
+        <small>Cô dâu</small>
+      </div>
+    </div>
+
+    <div class="date-place">
+      <div class="date-item">
+        <span style="font-size:2rem;">💒</span>
+        <span>Lễ cưới</span>
+      </div>
+      <div class="date-item">
+        <span style="font-size:2rem;">📅</span>
+        <span>28 . 4 . 2026</span>
+      </div>
+      <div class="date-item">
+        <span style="font-size:2rem;">📍</span>
+        <span>White Palace</span>
+      </div>
+    </div>
+
+    <div class="footer-quote">
+      Mãi bên nhau nhé, tình yêu ❤️
+    </div>
+    <div style="margin-top:10px; font-family:Quicksand; color:#b37b8c; font-size:0.9rem;">
+      #TienDatLoveLeHuyen #CuteCouple
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const petalsContainer = document.getElementById('petalsContainer');
+      const petalCount = 35; // số cánh hoa
+
+      function createPetal() {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        
+        // Vị trí ngẫu nhiên theo chiều ngang
+        const leftPosition = Math.random() * 100; // %
+        petal.style.left = leftPosition + '%';
+        
+        // Kích thước ngẫu nhiên
+        const size = Math.floor(Math.random() * 16 + 14); // 14-30px
+        petal.style.width = size + 'px';
+        petal.style.height = size + 'px';
+        
+        // Thời gian rơi ngẫu nhiên
+        const duration = Math.random() * 7 + 6; // 6-13s
+        petal.style.animationDuration = duration + 's';
+        
+        // Độ trễ bắt đầu ngẫu nhiên
+        const delay = Math.random() * 5;
+        petal.style.animationDelay = delay + 's';
+        
+        // Màu sắc hơi khác biệt
+        const hueShift = Math.floor(Math.random() * 20 - 10); // -10 đến +10
+        petal.style.background = `radial-gradient(circle at 30% 30%, #ffdfe9, #faaac0)`;
+        petal.style.filter = `hue-rotate(${hueShift}deg)`;
+        
+        petalsContainer.appendChild(petal);
+        
+        // Xóa petal sau khi animation kết thúc để giải phóng DOM (tùy chọn)
+        setTimeout(() => {
+          if (petal && petal.parentNode === petalsContainer) {
+            petal.remove();
+          }
+        }, (duration + delay) * 1000 + 500);
+      }
+
+      // Tạo petal ban đầu
+      for (let i = 0; i < petalCount; i++) {
+        setTimeout(() => {
+          createPetal();
+        }, i * 150); // tạo dần để không bị trùng một lúc
+      }
+
+      // Liên tục tạo petal mới để duy trì hiệu ứng
+      setInterval(() => {
+        // Giới hạn số petal trên màn hình để không quá tải
+        if (petalsContainer.children.length < 40) {
+          createPetal();
+        }
+      }, 800);
+    })();
+  </script>
 </body>
 </html>
